@@ -17,4 +17,4 @@ If you do, feel free to create an [issue](https://github.com/A-noximous/nylon/is
 ## Contributing
 Whether its fixing a bug, or adding a requested feature, feel free to contribute through a [pull request](https://github.com/A-noximous/nylon/pulls).<br />
 
-##This mod requires the [Fabric API](https://www.curseforge.com/minecraft/mc-mods/fabric-api)
+## This mod requires the [Fabric API](https://www.curseforge.com/minecraft/mc-mods/fabric-api)
