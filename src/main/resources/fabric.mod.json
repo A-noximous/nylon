@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "id": "nylon",
+  "version": "${version}",
+
+  "name": "Nylon",
+  "description": "An open source Utility Mod that accepts suggestions and contributions",
+  "authors": [
+    "Anoximous"
+  ],
+  "contact": {
+    "homepage": "",
+    "sources": ""
+  },
+
+  "license": "",
+  "icon": "assets/nylon/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "com.anoximous.nylon.Nylon"
+    ]
+  },
+  "mixins": [
+    "nylon.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.11.3",
+    "fabric": "*",
+    "minecraft": "1.17.x",
+    "java": ">=16"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}
