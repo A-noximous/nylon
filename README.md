@@ -1,5 +1,5 @@
 # What is Nylon?
-Nylon is a Fabric Utility mod adding several *small* tweaks that make the game easier to play.
+Nylon is a client side Fabric Utility mod adding several *small* tweaks that make the game easier to play.
 
 ## What does it include?
 Nylon currently has the following features:<br />
