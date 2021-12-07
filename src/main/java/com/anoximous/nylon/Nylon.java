@@ -26,10 +26,9 @@ public class Nylon implements ClientModInitializer {
         platformRegister(mc);
         shrugRegister(mc);
         emoteRegister();
-        infoRegister(mc);
         nudgeRegister(mc);
-        helpRegister(mc);
-        LOGGER.info("Initialized Argon Client!");
+        nylonRegister(mc);
+        LOGGER.info("Initialized Nylon!");
     }
 
     public void posRegister(MinecraftClient mc) {
@@ -197,22 +196,6 @@ public class Nylon implements ClientModInitializer {
                                         .executes(ctx -> emote("（’◇’）ゞ"))))));
 
     }
-    public void infoRegister(MinecraftClient mc) {
-        ClientCommandManager.DISPATCHER.register(ClientCommandManager.literal("info")
-                .then(ClientCommandManager.literal("showXpOrbValue")
-                    .executes(ctx -> {
-                        NylonConstants.RENDER.renderExpValue(!NylonConstants.renderExpValue);
-                        sendNylonMessage("Toggled XP Orb Value Rendering", NylonConstants.MESSAGE.Output, mc, true);
-                       return 1;
-                }))
-                .then(ClientCommandManager.literal("showLivingEntityHealth")
-                    .executes(ctx -> {
-                        NylonConstants.RENDER.renderLivingEntityHealth(!NylonConstants.renderLivingEntityHealth);
-                        sendNylonMessage("Toggled Living Entity Health Rendering", NylonConstants.MESSAGE.Output, mc, true);
-                        return 1;
-                }))
-        );
-    }
     public void nudgeRegister(MinecraftClient mc) {
         ClientCommandManager.DISPATCHER.register(ClientCommandManager.literal("nudge")
                 .then(ClientCommandManager.literal("look")
@@ -238,27 +221,38 @@ public class Nylon implements ClientModInitializer {
                                             return 1;
                                         }))))
         );}
-    public void helpRegister(MinecraftClient mc) {
-        Text helpMsg = new LiteralText("")
-                .append("Nylon Commands: ").styled(style -> style.withColor(Formatting.GRAY).withBold(true))
-                .append("/pos - copy or send a chat message containing the players or target blocks coordinates\n")
-                .append("/platform - place a block below the players feet\n")
-                .append("/shrug - print ¯\\_(ツ)_/¯ to chat\n")
-                .append("/emote - send a variety of ASCII emoticons in chat\n")
-                .append("/info - show certain data of certain entities\n")
-                .append("/nudge - tweak you position and rotation precisely\n")
-                .append("/help - display this message\n")
-                .append("\nNylon Aliases: ").styled(style -> style.withColor(Formatting.GRAY).withBold(true))
-                .append("/sp - alias for /pos say\n")
-                .append("/cp - alias for /pos copy\n")
-                .append("/plt - alias for /platform\n");
+    public void nylonRegister(MinecraftClient mc) {
         assert mc.player != null;
         ClientCommandManager.DISPATCHER.register(ClientCommandManager.literal("nylon")
                         .then(ClientCommandManager.literal("help")
                             .executes(ctx -> {
-                                mc.player.sendMessage(helpMsg, false);
+                                mc.player.sendMessage(new LiteralText("Nylon Commands:").styled(style -> style.withColor(Formatting.GRAY).withBold(true)), false);
+                                mc.player.sendMessage(new LiteralText("/pos - copy or send a chat message containing the players or target blocks coordinates"), false);
+                                mc.player.sendMessage(new LiteralText("/platform - place a block below the players feet"), false);
+                                mc.player.sendMessage(new LiteralText("/shrug - print ¯\\_(ツ)_/¯ to chat"), false);
+                                mc.player.sendMessage(new LiteralText("/emote - send a variety of ASCII emoticons in chat"), false);
+                                mc.player.sendMessage(new LiteralText("/nudge - tweak you position and rotation precisely"), false);
+                                mc.player.sendMessage(new LiteralText("/nylon - more options relating to the mod"), false);
+
+                                mc.player.sendMessage(new LiteralText("Nylon Aliases:").styled(style -> style.withColor(Formatting.GRAY).withBold(true)), false);
+                                mc.player.sendMessage(new LiteralText("/sp - alias for /pos say"), false);
+                                mc.player.sendMessage(new LiteralText("/cp - alias for /pos copy"), false);
+                                mc.player.sendMessage(new LiteralText("/plt - alias for /platform"), false);
                                 return 1;
-                        })));
+                        }))
+                        .then(ClientCommandManager.literal("showXpOrbValue")
+                                .executes(ctx -> {
+                                    NylonConstants.RENDER.renderExpValue(!NylonConstants.renderExpValue);
+                                    sendNylonMessage("Toggled XP Orb Value Rendering", NylonConstants.MESSAGE.Output, mc, true);
+                                    return 1;
+                        }))
+                        .then(ClientCommandManager.literal("showLivingEntityHealth")
+                                .executes(ctx -> {
+                                    NylonConstants.RENDER.renderLivingEntityHealth(!NylonConstants.renderLivingEntityHealth);
+                                    sendNylonMessage("Toggled Living Entity Health Rendering", NylonConstants.MESSAGE.Output, mc, true);
+                                    return 1;
+                        }))
+        );
 
     }
 

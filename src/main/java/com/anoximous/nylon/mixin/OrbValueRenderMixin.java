@@ -47,7 +47,7 @@ public abstract class OrbValueRenderMixin {
         int j = (int)(bo * 255.0F) << 24;
         TextRenderer textRenderer = mc.textRenderer;
         float h = (float)(-textRenderer.getWidth(text) / 2);
-        Matrix4f matrices = matrixStack.peek().getModel();
+        Matrix4f matrices = matrixStack.peek().getPositionMatrix();
         int light = getBlockLight(experienceOrbEntity, experienceOrbEntity.getBlockPos());
         textRenderer.draw(text, h, 0f, Color.WHITE.getRGB(), false, matrices, vertexConsumerProvider, true, j, light);
         matrixStack.pop();
