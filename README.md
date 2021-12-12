@@ -9,7 +9,7 @@ Nylon currently has the following features:<br />
 /emote - send a variety of ASCII emoticons in chat<br />
 /info - show certain data of certain entities<br />
 /nudge - tweak you position and rotation precisely<br />
-/carbon help - display this message<br />
+/nylon help - more features relating to the mod(/nylon help for help message)<br />
 
 ## I have a suggestion
 If you do, feel free to create an [issue](https://github.com/A-noximous/nylon/issues).<br />
